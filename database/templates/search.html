@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"><title>Search School Districts and Charters | EdSource</title></meta>
+        <link rel="stylesheet" type="text/css" href="http://edsource.org/wp-content/css/charts/table.css">
+        {% include 'header.html' %}
+    </head>
+    <body>
+        <div id="slick-contain">
+            {% include 'nav.html' %}
+            <section id="slick-body">
+                <div role="intro" class="seventy">
+                    <h2>Search School Districts and Charters</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                </div>
+                <div class="pretty-table seventy">
+                    <section id="pretty-table-search-options">
+                        <input id="pretty-table-search" type="text" style="height:24px;" placeholder="Search School Districts">
+                        <div><p class="pretty-table-button" id="execute-search">Search</p></div>
+                        <div><p class="pretty-table-button" id="reset-search">Reset</p></div>
+                    </section>
+                    <section>
+                         <table id="lcff-table" cellpadding=7>
+                            <thead>
+                                <th>District/Charter</th>
+                                <th>High-Needs Students</th>
+                                <th>2015-16 Estimate</th>
+                                <th>2020-21 Target</th>
+                            </thead>
+                            {% for d in data %}
+                            <tr>
+                                <td><a href="{{d.slug}}.html">{{d.target}}</a></td>
+                                <td>{{'{:.0f}'.format(d.high_needs|float*100)}}%</td>
+                                <td>${{('{0:,}'.format(d.y201516 | int))}}</td>
+                                <td>${{('{0:,}'.format(d.y202021 | int))}}</td>                                             
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </section>
+                </div>  
+            </section>  
+            {% include 'footer.html' %}    
+        </div>
+    </body>    
+    <script type="text/javascript">
+        function searchTool(c){
+            var jQueryrows = jQuery(c + ' tr');
+            var allRows = jQuery(c + ' tr:not('+ c +' thead tr)');
+
+            /* SEARCH STRING
+            ======================================*/    
+            var val = jQuery.trim(jQuery('#pretty-table-search').val()).replace(/ +/g, ' ').toLowerCase();
+
+            if (val === ''){
+                jQuery(allRows).css('display','table-row');
+            }
+            else if (val !== '') {
+                 for (var i=0 ; i < allRows.length ; i++){
+                    allRows[i].style.display = "table-row";
+
+                    var testText = allRows[i].textContent;
+                    testText = testText.replace(/\s+/g, ' ').toLowerCase();
+                    if (testText.indexOf(val) == -1){
+                        allRows[i].style.display = "none";
+                    }
+                 }
+            }   
+        }
+
+        jQuery(document).ready(function(){
+
+            /* CONFIGURE TABLESORTER
+            ======================================*/ 
+            jQuery('#lcff-table').tablesorter();
+
+            /* SEARCH OPTIONS
+            ======================================*/ 
+            jQuery('#execute-search').on('click', function(){searchTool('#lcff-table');});
+            jQuery('#pretty-table-search').on('keypress', function(e){var key = e.which;if (key == 13){searchTool('#lcff-table');}})
+
+            jQuery('#reset-search').on('click', function(){
+                jQuery('tr').css('display','table-row');
+                jQuery('#pretty-table-search').val('');
+                jQuery('.pretty-table tbody tr').slice(10).hide();
+            })
+        })
+
+        window.onload = function(){
+            /* TRUNCATION
+            ======================================*/
+            //hide all rows past 10th as default
+            jQuery('.pretty-table tbody tr').slice(10).hide();
+
+            //add navigation buttons
+            jQuery('.pretty-table').append('<div class="pretty-table-nav"><p first="1"><a>Previous</a></p><p status="0"><a>Expand Rows</a></p><p last="10"><a>Next</a></p></div>');
+
+            // Next Rows
+            jQuery('.pretty-table .pretty-table-nav p:eq(2)').on('click', function(){
+                var last = parseInt(jQuery(this).attr('last')), total = jQuery('.pretty-table tbody tr').size();
+
+                //show previous
+                jQuery('.pretty-table .pretty-table-nav p:eq(0)').css('display', 'inline');
+                
+                //make sure we don't hide all the rows
+                if (total === last){return;}
+                else if ((last+10) > total){
+                    jQuery('.pretty-table tbody tr').hide();
+                    jQuery('.pretty-table tbody tr').slice(last, total).show();
+                    jQuery(this).attr('last', total);
+                }
+                else {
+                    jQuery('.pretty-table tbody tr').hide();
+                    jQuery('.pretty-table tbody tr').slice(last, last+10).show();
+                    last += 10;
+                    jQuery(this).attr('last', last);
+                }       
+
+                //do we need a next?
+                if (total === last){jQuery('.pretty-table .pretty-table-nav p:eq(2)').hide();}  
+
+                //update previous data
+                jQuery('.pretty-table .pretty-table-nav p:eq(0)').attr('first', last-9);
+
+            });
+
+            // Expand All or Collapse
+            jQuery('.pretty-table .pretty-table-nav p:eq(1)').on('click', function(){
+                var status = parseInt(jQuery(this).attr('status'));
+
+                if (status == 0){
+                    jQuery('.pretty-table tbody tr').show();
+                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Collapse Rows');
+                    jQuery('.pretty-table .pretty-table-nav p:eq(0)').attr('first', '1').hide();
+                    jQuery('.pretty-table .pretty-table-nav p:eq(2)').attr('last', '10').hide();
+                    jQuery(this).attr('status', '1');
+                }
+                else if (status == 1){
+                    jQuery('.pretty-table tbody tr').slice(10).hide();
+                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Expand Rows');
+                    jQuery('.pretty-table .pretty-table-nav p:eq(2)').css('display', 'inline');
+                    jQuery(this).attr('status', '0');
+                }
+                
+            });
+
+            // Previous Rows
+            jQuery('.pretty-table .pretty-table-nav p:eq(0)').on('click', function(){
+                var first = parseInt(jQuery(this).attr('first'));
+
+                //show next
+                jQuery('.pretty-table .pretty-table-nav p:eq(2)').css('display', 'inline');
+
+                //make sure we don't hide all the rows
+                if (first == 1){return;}
+                else if ((first-10) < 1){
+                    jQuery('.pretty-table tbody tr').hide();
+                    jQuery('.pretty-table tbody tr').slice(0, 10).show();
+                    jQuery(this).attr('first', 1);
+                }
+                else {
+                    jQuery('.pretty-table tbody tr').hide();
+                    jQuery('.pretty-table tbody tr').slice(first-11, first-1).show();
+                    first -= 10;
+                    jQuery(this).attr('first', first);
+                }       
+
+                //update next data
+                jQuery('.pretty-table .pretty-table-nav p:eq(2)').attr('last', first+9);
+
+                //do we need a previous?
+                if (first === 1){jQuery('.pretty-table .pretty-table-nav p:eq(0)').hide();} 
+
+            });
+        }
+    </script>
+</html>
