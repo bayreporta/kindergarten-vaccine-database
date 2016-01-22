@@ -16,16 +16,16 @@ def get_csv(path):
 @app.route('/')
 def index():
 	template = 'index.html'
-	#raw_data = get_csv('./static/data_all.csv')
+	raw_data = get_csv('./static/data.csv')
 	return render_template(template)
 
 ## DETAIL PAGE ##
 def detail(slug):
 	template = 'detail.html'
-	raw_data = get_csv('./static/data_all.csv')
+	raw_data = get_csv('./static/data.csv')
 	for row in raw_data:
 		if row['slug'] == slug:
-			return render_template(template, all=raw_data, object=row, data=json.dumps(row))
+			return render_template(template, data=row, json=json.dumps(row))
 	abort(404)
 app.add_url_rule('/<slug>.html','detail', detail)
 

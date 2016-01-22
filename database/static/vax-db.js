@@ -38,7 +38,7 @@ var searchTool = {
 	populateResults:function(r, c, l){
 		jQuery('div[role="results"]').empty();
 
-		for (var i=0 ; i < r.length ; i++){if (l === 'yes'){jQuery('.lcff-results').append('<a href="'+r[i][1]+'.html"><div><h2>'+r[i][0]+'</h2><h4>'+r[i][3]+'</h4><h4>'+r[i][2]+'</h4></div></a>');}}
+		for (var i=0 ; i < r.length ; i++){if (l === 'yes'){jQuery('.vax-results').append('<a href="'+r[i][1]+'.html"><div><h2>'+r[i][0]+'</h2><h4>'+r[i][3]+'</h4><h4>'+r[i][2]+'</h4></div></a>');}}
 
 		jQuery('div[role="results"] a').on('click', function(){
 			var id = jQuery(this).attr('data'),

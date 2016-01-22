@@ -8,9 +8,9 @@
 #slick-header .slick-nav-hed a {margin:0 20px;}
 #slick-header .slick-social-hed {top:-3px;}
 
-#lcff-header {width:100%;margin-top:5em;}
-	#lcff-header img {width:100%;height:auto;}
-	#lcff-header p {text-align: right;margin: 0 1% 0 0;font-size: .8em;}
+#vax-header {width:100%;margin-top:5em;}
+	#vax-header img {width:100%;height:auto;}
+	#vax-header p {text-align: right;margin: 0 1% 0 0;font-size: .8em;}
 
 /* BODY STYLE 
 ===========================================*/
@@ -40,7 +40,7 @@
 ===========================================*/
 #slick-body>div[role="search"] {}
 	#slick-body>div[role="search"] input {width:100%;}  
-#slick-body>div[role="results"] {max-height: 200px;overflow: scroll;border-bottom: #ddd solid 2px;margin-top: 1em;border-top: #ddd solid 2px;}
+#slick-body>div[role="results"] {max-height: 200px;overflow: scroll;border-bottom: #ddd solid 2px;margin-top: 1em;margin-bottom: 1.5em;border-top: #ddd solid 2px;}
 	#slick-body>div[role="results"] div {padding: .5em 0;border-bottom: 1px solid #aaa;}
 	#slick-body>div[role="results"] div:last-of-type {border:none;}
 	#slick-body>div[role="results"] h2 {font-size: .9em;text-align: left;color: #333;}

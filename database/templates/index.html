@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8"><title>Kindergarten Vaccination Database | EdSource</title></meta>
         {% include 'header.html' %}
+        <link rel='stylesheet' id='default_css-css'  href='/static/bar.css' type='text/css' media='all' />
         <script type="text/javascript" src="/static/vax-db.js"></script>
+        <script type="text/javascript" src="/static/stacked-column-percent.js"></script>
     </head>
     <body>
         <div id="slick-contain">
             {% include 'nav.html' %}
-            <section id="lcff-header"><img src="http://edsource.org/wp-content/uploads/2015/11/vaccine-main.png"><p>Norm Lanier, Flickr</p></section>
+            <section id="vax-header"><img src="http://edsource.org/wp-content/uploads/2015/11/vaccine-main.png"><p>Norm Lanier, Flickr</p></section>
             <section id="slick-body">              
                 <div role="intro" class="fifty">
                     <h2>Kindergargen Vaccination Database</h2>
@@ -18,10 +20,10 @@
                     <div>
                         <h3>Search Kindergarten Schools</h3>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <input class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="PLACEHOLDER">
+                        <input class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
                     </div>
                 </div>
-                <div class="lcff-results fifty" role="results" type="0"></div>
+                <div class="vax-results fifty" role="results" type="0"></div>
                 <div role="statewide" class="fifty">
                     <div>
                         <h3>Statewide Data</h3>

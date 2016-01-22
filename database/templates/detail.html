@@ -1,65 +1,20 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="utf-8"><title>{{object.target}} School Finance | EdSource</title></meta>
+        <meta charset="utf-8"><title>{{data.school_name}} Vaccine Database | EdSource</title></meta>
         {% include 'header.html' %}
-        <link rel="stylesheet" type="text/css" href="http://edsource.org/wp-content/css/charts/bar.css">
-        <script type="text/javascript" src="http://edsource.org/wp-content/js/charts/bar-jinja.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/bar.css">
+        <script type="text/javascript" src="/static/stacked-column-percent.js"></script>
     </head>
     <body>
         <div id="slick-contain">
             {% include 'nav.html' %}
-            <section id="slick-body">
-               <div role="header" class="seventy">
-                    <h2>{{object.target}}</h2>
-                    <p>{{object.county_name}} County</p>
-               </div>
-               <div class="temp-charts" id="chart1"></div>
-               <div role="caveat" class="twenty-five">
-                    <p>{% if object.floor_targ_caveat == 'TRUE' %} CAVEAT! {% endif %}{% if object.basic_aid  == 'TRUE' %} I'm a basic aid district, whomp.{% endif %}</p>
-               </div>
-               <div role="facts" class="twenty-five">
-                    <h3>Key Facts</h3>
-                    <h4>Avg Daily Attendance</h4>
-                    <p>{{('{0:,}'.format(object.ada | int))}}</p>
-                    <h4>High-Needs Students</h4>
-                    <p>{{'{:.0f}'.format(object.high_needs|float*100)}}%</p>
-                    <h4>2014-15 Funding</h4>
-                    <p>${{('{0:,}'.format(object.y201415 | int))}}/student</p>
-                    <h4>2015-16 Estimate</h4>
-                    <p>${{('{0:,}'.format(object.y201516 | int))}}/student</p>
-                    <h4>2020-21 Target</h4>
-                    <p>${{('{0:,}'.format(object.y202021 | int))}}/student</p>
-               </div>
-               <div role="links" class="twenty-five">
-                    <h3>Related Districts and Charters</h3>
-                    {% for d in all %}
-                        {% if d.district_code == object.district_code %}
-                            {% if d.target != object.target %}
-                                <a href="{{d.slug}}.html"><p>{{d.target}}</p></a>
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
-               </div>
-            </section>
+         
 
             {% include 'footer.html' %}
         </div>
     </body>    
     <script type="text/javascript">
-        var caliAvg = {
-            target:'Average',
-            y201415:7813,
-            y201516:8792,
-            y202021:10700
-        }
-
-        jQuery(document).ready(function(){
-            var related = jQuery('div[role="links"] a').size();
-            if (related < 1){jQuery('div[role="links"]').append('<p>No related districts or charter schools found.</p>')}
-        })
-
-
-        barChart.getAttr(null, {{data|safe}}, caliAvg, 'chart1', 360, 300, [50,40,30,50],'#198c96','#8DCBC6',false, null, null, '$,', 5, .1, null, 'Funding per Student', null, null, 3, 5);
+        stackedColumnChart.getAttr(stackedColumnChart.vars,{{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['BuPu'], 6, false, null, null, ',g', 10, .1, 'TITLE', 'SUBHED', 'SOURCE', true);
     </script>
 </html>
