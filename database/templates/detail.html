@@ -9,12 +9,11 @@
     <body>
         <div id="slick-contain">
             {% include 'nav.html' %}
-         
-
+            <div class="temp-charts" id="stacked-chart-1"></div>
             {% include 'footer.html' %}
         </div>
     </body>    
     <script type="text/javascript">
-        stackedColumnChart.getAttr(stackedColumnChart.vars,{{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['BuPu'], 6, false, null, null, ',g', 10, .1, 'TITLE', 'SUBHED', 'SOURCE', true);
+        stackedColumnChart.getAttr({{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['BuPu'], 6, false, null, null, ',g', 10, .1, 'TITLE', 'SUBHED', 'SOURCE', true);
     </script>
 </html>

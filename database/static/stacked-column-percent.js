@@ -1,5 +1,5 @@
 var stackedColumnChart = {
-	getAttr: function(type, path, contain, w, h, m, color, items, sort, xlabel, ylabel, tF, tick, pad, title, subhed, source, legend){
+	getAttr: function(path, contain, w, h, m, color, items, sort, xlabel, ylabel, tF, tick, pad, title, subhed, source, legend){
 		var p = {
 			label:[],
 			data:[],
@@ -19,10 +19,8 @@ var stackedColumnChart = {
 			title:null,
 			subhed:null,
 			source:null,
-			type:null,
 			legend:null
 		}
-		p.type = type;
 
 		p.w = parseInt(w)// - m[1] - m[3];
 		p.h = parseInt(h)// - m[0] - m[2];
@@ -57,19 +55,18 @@ var stackedColumnChart = {
 	    return val;
 	},
 	processData:function(d){
-		console.log(d);
-
 		var ret = new Array(),
 			year = 2008;
 
 		for (var i = 0 ; i < 8 ; i++){
 			var obj = new Object();
 
-			obj['utd_' + year] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['con_' + year] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['pme_' + year] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['pbe_' + year] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			i == 7 ? obj['overdue_' + year] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['overdue_' + year] = 0
+			obj['xlabel'] = String(year);
+			obj['utd'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['con'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['pme'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['pbe'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			i == 7 ? obj['overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['overdue'] = 0
 
 			ret.push(obj);
 			year ++;
@@ -100,30 +97,18 @@ var stackedColumnChart = {
 
 		/* DATA AND DRAW
 		===============================================================================*/
-		p.data = this.processData(p.path);
+		var data = this.processData(p.path);
 
-		color.domain(d3.keys(data[0]).filter(function(key){ return key !== 'xlabel'}));
-		
+		color.domain(d3.keys(data[0]).filter(function(key){return key !== 'xlabel'}));
+				
 		/* MAPS Y POS FOR SEGMENTS
 		====================================*/
-		if (p.type === 'stackedbarpercent'){
-			data.forEach(function(d){
-				var y0 = 0;
-				d.seg = color.domain().map(function(name){ return {data:d[name], name:name, y0:y0, y1: y0 += +d[name]}; })
-				d.seg.forEach(function(d) {d.y0 /= y0; d.y1 /= y0;});
-			})
-		}
-		else if (p.type === 'stackedbar'){
-			data.forEach(function(d) {
-			   	var y0 = 0;
-			   	d.seg = color.domain().map(function(name) { return {data:d[name], name: name, y0: y0, y1: y0 += +d[name]}; });
-			   	d.total = d.seg[d.seg.length - 1].y1;
-			});
-
-			/* MAX VALUE
-			====================================*/
-			yScale.domain([0, d3.max(data, function(d) { return d.total; })]).nice().clamp(true);
-		}
+		data.forEach(function(d){
+			var y0 = 0;
+			d.seg = color.domain().map(function(name){ return {name:name, y0:y0, y1: y0 += +d[name]}; })
+			d.seg.forEach(function(d) {d.y0 /= y0; d.y1 /= y0;});
+		})
+		console.log(data)
 
 		/* SORT
 		====================================*/
@@ -143,18 +128,10 @@ var stackedColumnChart = {
 		====================================*/
 		var tip = d3.tip().html(function(d) { 
 			jQuery('.n').addClass('d3-tip');
-			console.log(d)
-			if (p.tickFormat == '.0%'){
-				return (d.name + '<br>' + d.data * 100 + '%');
-			}
-			else if (p.tickFormat == '$,'){
-				return (d.name + '<br>' + '$' + stackedColumnChart.commaSeparateNumber(Math.round(d.y1 - d.y0)));
-			}
-			else if (p.tickFormat == ',g'){
-				return (d.name + '<br>' + stackedColumnChart.commaSeparateNumber(Math.round(d.y1 - d.y0)));
-			}
+			//console.log(d)
+			return (d.name + '<br>' + Math.round(d.data) + '%');
 		});
-		chart.call(tip);
+		//chart.call(tip);
 
 		/* DRAW COLUMNS
 		====================================*/
@@ -163,7 +140,7 @@ var stackedColumnChart = {
 
 		items.selectAll('rect').data(function(d) {return d.seg;}).enter().append('rect')
 			.attr('width', xScale.rangeBand()).attr('y', function(d) {return yScale(d.y1);}).attr('height', function(d) {return yScale(d.y0) - yScale(d.y1); }).style('fill', function(d){ return color(d.name);})
-			.on('mouseover', tip.show).on('mouseout', tip.hide);
+			//.on('mouseover', tip.show).on('mouseout', tip.hide);
 
 		/* ADJUST SVG
 		====================================*/
@@ -171,11 +148,10 @@ var stackedColumnChart = {
 		var svgg = jQuery(contain + ' svg').attr('height');		
 
 		jQuery(contain).prepend('<div id="legend"></div>');
-		for (var i = 0 ; i < p.data[0].seg.length ; i++){
-			jQuery(contain + ' #legend').append('<div class="legend-item"><div></div><p>'+p.data[0].seg[i].name+'</p></div>');
+		for (var i = 0 ; i < data[0].seg.length ; i++){
+			jQuery(contain + ' #legend').append('<div class="legend-item"><div></div><p>'+data[0].seg[i].name+'</p></div>');
 			jQuery(contain + ' .legend-item>div:eq('+i+')').css({'background-color':p.color[i]})
 		}
-
 
 		/* ADD META DETAILS
 		=================================*/
