@@ -50,10 +50,12 @@
 
 /* TABLE STYLE 
 ===========================================*/
-.temp-charts {border-top: 1px solid #aaa;margin: 3em auto 0 auto;}
-	.temp-charts #meta p {text-align:center;font-size:1em;color:#333;font-weight: 700;}
-	.temp-charts #legend {overflow:hidden;width:75%;margin:1em auto 0 auto;}
-		.temp-charts #legend>div {display:inline-flex;float: left;width: 48%;}
+.temp-charts {border-top: 2px solid #333;margin: 3em auto 0 auto;}
+	.temp-charts #meta {padding-bottom: 1em;}
+		.temp-charts #meta p {text-align:center;font-size:1em;color:#333;font-weight: 700;margin:0;}
+		.temp-charts #meta p:first-of-type {font-size:1.4em;}
+	.temp-charts #legend {overflow:hidden;display:flex;flex-wrap:wrap;margin:1em auto 0 auto;}
+		.temp-charts #legend>div {display:inline-flex;width:151px;}
 		.temp-charts #legend>div>div:first-of-type {width: 15px;float: left;}
 		.temp-charts #legend>div>div>div {width: 15px;height: 15px;}
 		.temp-charts #legend p {margin:-3px 0 0 5px;font-size:.9em;color:#666;}		

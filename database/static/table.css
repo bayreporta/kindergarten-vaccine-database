@@ -1,0 +1,35 @@
+.pretty-table table {width: 100%;border-collapse: collapse;margin: 0 0 40px 0;table-layout:fixed;}
+.pretty-table td {font-family: 'Roboto', san-serif;text-align: center;padding:10px 0;font-size: .8em;color: #333;}
+.pretty-table th, .pretty-table-fixed div {font-family:'roboto condensed', san-serif;}
+.pretty-table th:first-of-type {text-align:left;}
+.pretty-table td:first-of-type {text-align:left;}
+.pretty-table tr {padding:10px 0;}
+.pretty-table thead {}
+.pretty-table thead tr, .pretty-table-fixed {height:50px;border-bottom:1px solid #aaa;border-top:1px solid #aaa;cursor:pointer;}
+
+.pretty-table {border-top: 2px solid #333;border-bottom: 2px solid #333;}
+.pretty-table th {cursor: pointer;font-size: .9em;}
+.pretty-table tbody tr {border-bottom:1px #ddd solid;}
+
+.pretty-table-meta {margin:30px 0 20px 0;}
+.pretty-table-meta h2 {margin: 15px 0 0 0;}
+.pretty-table-meta p {font-family: roboto, san-serif;font-size: .9em;color: #666;margin: 0 0 5px 0;}
+
+.pretty-table-fixed {display:none;position: fixed;top: 0;background: #FFF;}
+.pretty-table-fixed div {text-align: center;padding:10px 0;font-size: .9em;color: #333;float: left;display: inline-block;font-weight: 700;}
+.pretty-table-fixed div:first-of-type {text-align: left;}
+
+/* SEARCH STYLES */
+#pretty-table-search {height:20px;width:30%;border:1px solid #ccc; float:left;max-width:300px;margin:-3px 0 0 0;}
+#pretty-table-search-options {margin:0 0 20px 0;}
+#pretty-table-search-options .pretty-table-button:hover {background:#aaa;}
+#pretty-table-search-options div:first-of-type {float:left;}
+#execute-search, #reset-search {margin:0 0 0 20px;padding:5px;border-radius: 0;}
+.pretty-table-button {padding: 8px;display: inline;background: #ddd;color: #333;cursor: pointer;margin: 0 10px 0 0;font-size: .8em;border-radius: 5px;}
+
+/* SEARCH STYLES */
+.pretty-table-nav {text-align:right;}
+.pretty-table-nav p {font-size: 1em;margin-right: 25px;display:inline;}
+.pretty-table-nav p:first-of-type {display:none;}
+.pretty-table-nav p:nth-of-type(2) {}
+.pretty-table-nav p:last-of-type {}

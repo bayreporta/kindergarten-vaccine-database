@@ -9,11 +9,201 @@
     <body>
         <div id="slick-contain">
             {% include 'nav.html' %}
-            <div class="temp-charts" id="stacked-chart-1"></div>
+            <section id="slick-body">
+                <div role="header" class="seventy">
+                    <h2>{{data.school_name}}</h2>
+                    <p>{{data.city}}, CA</p>
+                    <p>{{data.type | capitalize}} School</p>
+                </div>
+                <div class="temp-charts" id="stacked-chart-1"></div>
+                <div class="pretty-table fifty">
+                    <table id="pretty-table" cellpadding=7>
+                        <thead>
+                            <th>School Year</th>
+                            <th>Enrollment</th>
+                            <th>Vaccine Opt-out</th>
+                            <th>Medical Exemption</th>
+                            <th>Conditional</th>
+                            <th>Up-to-date</th>
+                            <th>Overdue</th>
+                        </thead>
+                        {% if data.enroll_2008 is string %}
+                        <tr>
+                            <td>2008</td>
+                            <td>{{('{0:,}'.format(data.enroll_2008 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2008 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2008 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2008 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2008 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2008</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2009 is string %}
+                        <tr>
+                            <td>2009</a></td>
+                            <td>{{('{0:,}'.format(data.enroll_2009 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2009 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2009 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2009 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2009 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2009</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2010 is string %}
+                        <tr>
+                            <td>2010</td>
+                            <td>{{('{0:,}'.format(data.enroll_2010 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2010 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2010 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2010 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2010 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2010</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2011 is string %}
+                        <tr>
+                            <td>2011</td>
+                            <td>{{('{0:,}'.format(data.enroll_2011 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2011 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2011 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2011 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2011 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2011</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2012 is string %}
+                        <tr>
+                            <td>2012</td>
+                            <td>{{('{0:,}'.format(data.enroll_2012 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2012 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2012 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2012 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2012 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2012</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2013 is string %}
+                        <tr>
+                            <td>2013</td>
+                            <td>{{('{0:,}'.format(data.enroll_2013 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2013 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2013 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2013 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2013 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2013</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2014 is string %}
+                        <tr>
+                            <td>2014</td>
+                            <td>{{('{0:,}'.format(data.enroll_2014 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2014 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2014 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2014 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2014 | int))}}</td>                                        
+                            <td>N/A</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2014</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                        {% if data.enroll_2015 is string %}
+                        <tr>
+                            <td>2015</td>
+                            <td>{{('{0:,}'.format(data.enroll_2015 | int))}}</td>
+                            <td>{{('{0:,}'.format(data.pbe_2015 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.pme_2015 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.con_2015 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.utd_2015 | int))}}</td>                                        
+                            <td>{{('{0:,}'.format(data.overdue_2015 | int))}}</td>                                        
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>2015</td>
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                        
+                            <td>N/A</td>                                                                              
+                        </tr>
+                        {% endif %}
+                    </table>
+                </div>
+                <p class="fifty" style="font-size:1em;"><em>California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                </div>
+            </section>
             {% include 'footer.html' %}
         </div>
     </body>    
     <script type="text/javascript">
-        stackedColumnChart.getAttr({{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['BuPu'], 6, false, null, null, ',g', 10, .1, 'TITLE', 'SUBHED', 'SOURCE', true);
+        stackedColumnChart.getAttr({{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['RdYlBu'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', 'Source: California Department of Public Health.<br> Years with missing data mean no data was available for that year.', true);
     </script>
 </html>

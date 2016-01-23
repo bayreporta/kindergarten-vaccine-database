@@ -62,12 +62,12 @@ var stackedColumnChart = {
 			var obj = new Object();
 
 			obj['xlabel'] = String(year);
-			obj['utd'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['con'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['pme'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['pbe'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			i == 7 ? obj['overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['overdue'] = 0
-
+			obj['Vaccine Opt-out'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Medical Exemption'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			i == 7 ? obj['Overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['Overdue'] = 0
+			obj['Conditional'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			
 			ret.push(obj);
 			year ++;
 		}
@@ -88,7 +88,7 @@ var stackedColumnChart = {
 		/* AXES
 		==========================*/
 		var xAxis = d3.svg.axis().scale(xScale).orient('bottom');
-		var yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(p.ticks).tickFormat(d3.format(p.tickFormat));
+		var yAxis = d3.svg.axis().scale(yScale).orient('left').ticks(p.ticks).tickFormat(d3.format('.0%'));
 
 		/* CHART
 		==========================*/
@@ -128,10 +128,9 @@ var stackedColumnChart = {
 		====================================*/
 		var tip = d3.tip().html(function(d) { 
 			jQuery('.n').addClass('d3-tip');
-			//console.log(d)
-			return (d.name + '<br>' + Math.round(d.data) + '%');
+			return (d.name + '<br>' + Math.round(((d.y1-d.y0) * 100)) + '%');
 		});
-		//chart.call(tip);
+		chart.call(tip);
 
 		/* DRAW COLUMNS
 		====================================*/
@@ -140,7 +139,7 @@ var stackedColumnChart = {
 
 		items.selectAll('rect').data(function(d) {return d.seg;}).enter().append('rect')
 			.attr('width', xScale.rangeBand()).attr('y', function(d) {return yScale(d.y1);}).attr('height', function(d) {return yScale(d.y0) - yScale(d.y1); }).style('fill', function(d){ return color(d.name);})
-			//.on('mouseover', tip.show).on('mouseout', tip.hide);
+			.on('mouseover', tip.show).on('mouseout', tip.hide);
 
 		/* ADJUST SVG
 		====================================*/
