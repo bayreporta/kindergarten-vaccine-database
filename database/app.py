@@ -2,7 +2,13 @@ import csv
 import json
 from flask import Flask
 from flask import render_template
+import sys
+
 app = Flask(__name__)
+
+## ADDRESS ENCODING ISSUES ##
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ## GET CSV ##
 def get_csv(path):
@@ -33,7 +39,7 @@ app.add_url_rule('/<slug>.html','detail', detail)
 @app.route('/search.html')
 def search():
 	template = 'search.html'
-	raw_data = get_csv('./static/data_all.csv')
+	raw_data = get_csv('./static/data.csv')
 	return render_template(template, data=raw_data)
 
 if __name__ == '__main__':

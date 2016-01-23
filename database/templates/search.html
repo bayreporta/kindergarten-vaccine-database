@@ -2,15 +2,15 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"><title>Search School Districts and Charters | EdSource</title></meta>
-        <link rel="stylesheet" type="text/css" href="http://edsource.org/wp-content/css/charts/table.css">
         {% include 'header.html' %}
     </head>
     <body>
+        <section id="loading"></section>
         <div id="slick-contain">
             {% include 'nav.html' %}
             <section id="slick-body">
                 <div role="intro" class="seventy">
-                    <h2>Search School Districts and Charters</h2>
+                    <h2>Search All Schools</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </div>
                 <div class="pretty-table seventy">
@@ -20,20 +20,30 @@
                         <div><p class="pretty-table-button" id="reset-search">Reset</p></div>
                     </section>
                     <section>
-                         <table id="lcff-table" cellpadding=7>
+                         <table cellpadding=7>
                             <thead>
-                                <th>District/Charter</th>
-                                <th>High-Needs Students</th>
-                                <th>2015-16 Estimate</th>
-                                <th>2020-21 Target</th>
+                                <th>School Name</th>
+                                <th>Type</th>
+                                <th>Enrollment</th>
+                                <th>Vaccine Opt-out</th>
+                                <th>Medical Exemption</th>
+                                <th>Conditional</th>
+                                <th>Up-to-date</th>
+                                <th>Overdue</th>
                             </thead>
                             {% for d in data %}
+                            {% if loop.index0 > 3 %}
                             <tr>
-                                <td><a href="{{d.slug}}.html">{{d.target}}</a></td>
-                                <td>{{'{:.0f}'.format(d.high_needs|float*100)}}%</td>
-                                <td>${{('{0:,}'.format(d.y201516 | int))}}</td>
-                                <td>${{('{0:,}'.format(d.y202021 | int))}}</td>                                             
+                                <td><a href="{{d.slug}}.html">{{d.school_name}}</a></td>
+                                <td>{{d.type|capitalize}}</td>
+                                <td>{{('{0:,}'.format(d.enroll_2015 | int))}}</td>
+                                <td>{{('{0:,}'.format(d.pbe_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(d.pme_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(d.con_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(d.utd_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(d.overdue_2015 | int))}}</td>                                             
                             </tr>
+                            {% endif %}
                             {% endfor %}
                         </table>
                     </section>
@@ -43,6 +53,25 @@
         </div>
     </body>    
     <script type="text/javascript">
+
+        /* LOAD CHECK
+        ===========================*/
+        function onReady(callback) {
+            var intervalID = window.setInterval(checkReady, 1000);
+            function checkReady() {
+                if (document.getElementsByTagName('body')[0] !== undefined) {
+                    window.clearInterval(intervalID);
+                    callback.call(this);
+                }
+            }
+        }
+
+        onReady(function () {
+            jQuery('#loaded').show();
+            jQuery('#loading').remove();
+        });
+
+
         function searchTool(c){
             var jQueryrows = jQuery(c + ' tr');
             var allRows = jQuery(c + ' tr:not('+ c +' thead tr)');
@@ -68,10 +97,9 @@
         }
 
         jQuery(document).ready(function(){
-
             /* CONFIGURE TABLESORTER
             ======================================*/ 
-            jQuery('#lcff-table').tablesorter();
+            jQuery('#pretty-table table').tablesorter();
 
             /* SEARCH OPTIONS
             ======================================*/ 
@@ -86,13 +114,14 @@
         })
 
         window.onload = function(){
+
             /* TRUNCATION
             ======================================*/
             //hide all rows past 10th as default
             jQuery('.pretty-table tbody tr').slice(10).hide();
 
             //add navigation buttons
-            jQuery('.pretty-table').append('<div class="pretty-table-nav"><p first="1"><a>Previous</a></p><p status="0"><a>Expand Rows</a></p><p last="10"><a>Next</a></p></div>');
+            jQuery('.pretty-table').append('<div class="pretty-table-nav"><p first="1"><a>Previous Rows</a></p><p status="0"><a>Show All</a></p><p last="10"><a>Next Rows</a></p></div>');
 
             // Next Rows
             jQuery('.pretty-table .pretty-table-nav p:eq(2)').on('click', function(){
@@ -129,14 +158,14 @@
 
                 if (status == 0){
                     jQuery('.pretty-table tbody tr').show();
-                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Collapse Rows');
+                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Show 10 Rows');
                     jQuery('.pretty-table .pretty-table-nav p:eq(0)').attr('first', '1').hide();
                     jQuery('.pretty-table .pretty-table-nav p:eq(2)').attr('last', '10').hide();
                     jQuery(this).attr('status', '1');
                 }
                 else if (status == 1){
                     jQuery('.pretty-table tbody tr').slice(10).hide();
-                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Expand Rows');
+                    jQuery('.pretty-table .pretty-table-nav p:eq(1) a').text('Show All');
                     jQuery('.pretty-table .pretty-table-nav p:eq(2)').css('display', 'inline');
                     jQuery(this).attr('status', '0');
                 }

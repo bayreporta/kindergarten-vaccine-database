@@ -50,6 +50,8 @@
 
 /* TABLE STYLE 
 ===========================================*/
+#loading {background-color: rgba(192, 192, 192, 0.5);background-image: url("/static/loading.gif");background-repeat: no-repeat;background-position: center;width: 100vw;height: 100vh;position: fixed;left:0;}
+
 .temp-charts {border-top: 2px solid #333;margin: 3em auto 0 auto;}
 	.temp-charts #meta {padding-bottom: 1em;}
 		.temp-charts #meta p {text-align:center;font-size:1em;color:#333;font-weight: 700;margin:0;}

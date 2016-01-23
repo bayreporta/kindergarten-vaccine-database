@@ -7,7 +7,7 @@
 .pretty-table thead {}
 .pretty-table thead tr, .pretty-table-fixed {height:50px;border-bottom:1px solid #aaa;border-top:1px solid #aaa;cursor:pointer;}
 
-.pretty-table {border-top: 2px solid #333;border-bottom: 2px solid #333;}
+.pretty-table {border-top: 2px solid #333;border-bottom: 2px solid #333;padding-top:1.5em;}
 .pretty-table th {cursor: pointer;font-size: .9em;}
 .pretty-table tbody tr {border-bottom:1px #ddd solid;}
 
