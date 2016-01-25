@@ -14,23 +14,421 @@
             <section id="slick-body">              
                 <div role="intro" class="fifty">
                     <h2>Kindergargen Vaccination Database</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p style="text-align:center;margin:0;"><em><a style="color:#666;" href="http://edsource.org/author/josborn">By John C. Osborn</a></em></p>
+                    <div style="width:246px;margin:0 auto;">
+                        <div class="slick-social">
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+                        </div>
+                    </div>
+                    <p>Use this database to investigate how many kindergarten students were vaccinated at any public, charter or private California elementary school in the 2015-16 school year. California law mandates that kindergarten students be up-to-date on a number of vaccines that help prevent childhood diseases, such as whooping cough, measles and polio. However, the 2015-16 school year is the last one which will allow parents to opt-out their children from those vaccine requirements for religious or personal reasons after the passage of SB 277 in 2015. Read our <a href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">answers to "frequently asked questions" about how SB 277</a> changes vaccine requirements.</p>
+                    <p>Have a question about the database? <a href="mailto:edsourceweb@gmail.com">Send your questions and comments our way.</a></p>
                 </div>
                 <div role="search" class="fifty">
                     <div>
-                        <h3>Search Kindergarten Schools</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <input class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
+                        <h3>Search Elementary Schools</h3>
+                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
+                        <input onclick="ga('send','event', 'VAX DATABASE', 'SEARCH SCHOOLS', '');" class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
                     </div>
                 </div>
                 <div class="vax-results fifty" role="results" type="0"></div>
-                <div role="statewide" class="fifty">
-                    <div>
-                        <h3>Statewide Data</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - All Schools</h2>
                     </div>
+                    <div class="temp-charts" id="stacked-chart-1"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2008 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2008 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2009 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2009 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2010 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2010 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2011 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2011 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2012 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2012 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2013 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2013 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2014 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2014 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>{{('{0:,}'.format(data[0].enroll_2015 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[0].pbe_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].pme_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].con_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].utd_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[0].overdue_2015 | int))}}</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
                 </div>
-                
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Non-Charter Public Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-2"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2008 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2008 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2009 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2009 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2010 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2010 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2011 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2011 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2012 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2012 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2013 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2013 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2014 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2014 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>{{('{0:,}'.format(data[1].enroll_2015 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[1].pbe_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].pme_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].con_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].utd_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[1].overdue_2015 | int))}}</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                </div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Private Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-3"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2008 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2008 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2009 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2009 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2010 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2010 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2011 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2011 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2012 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2012 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2013 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2013 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2014 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2014 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>{{('{0:,}'.format(data[2].enroll_2015 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[2].pbe_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].pme_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].con_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].utd_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[2].overdue_2015 | int))}}</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+
+                </div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Charter Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-4"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2008 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2008 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2008 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2009 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2009 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2009 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2010 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2010 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2010 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2011 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2011 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2011 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2012 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2012 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2012 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2013 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2013 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2013 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2014 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2014 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2014 | int))}}</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>{{('{0:,}'.format(data[3].enroll_2015 | int))}}</td>
+                                <td>{{('{0:,}'.format(data[3].pbe_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].pme_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].con_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].utd_2015 | int))}}</td>                                        
+                                <td>{{('{0:,}'.format(data[3].overdue_2015 | int))}}</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+
+                </div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function(){
+
+                        /* POPULATE SOCIAL
+                        =======================================*/   
+                        var URL = window.location.href;
+
+                        jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+                        jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+                        jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+                        jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+
+                        /* CONFIGURE TABLESORTER
+                        ======================================*/   
+                        jQuery('.pretty-table table').tablesorter({sortList: [[0,0]]});
+                    })
+
+                    stackedColumnChart.getAttr({{ data[0]|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({{ data[1]|safe }}, 'stacked-chart-2', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({{ data[2]|safe }}, 'stacked-chart-3', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({{ data[3]|safe }}, 'stacked-chart-4', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                </script>
+
             </section>      
             {% include 'footer.html' %}   
         </div>

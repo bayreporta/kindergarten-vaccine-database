@@ -23,7 +23,7 @@ def get_csv(path):
 def index():
 	template = 'index.html'
 	raw_data = get_csv('./static/data.csv')
-	return render_template(template)
+	return render_template(template, data=raw_data)
 
 ## DETAIL PAGE ##
 def detail(slug):
@@ -36,11 +36,11 @@ def detail(slug):
 app.add_url_rule('/<slug>.html','detail', detail)
 
 ## SEARCH PAGE ##
-@app.route('/search.html')
-def search():
-	template = 'search.html'
-	raw_data = get_csv('./static/data.csv')
-	return render_template(template, data=raw_data)
+#@app.route('/search.html')
+#def search():
+#	template = 'search.html'
+#	raw_data = get_csv('./static/data.csv')
+#	return render_template(template, data=raw_data)
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

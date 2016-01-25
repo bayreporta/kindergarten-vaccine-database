@@ -14,6 +14,9 @@
 
 /* BODY STYLE 
 ===========================================*/
+#slick-contain #slick-body a {color:#7ba8ce;}
+#slick-contain #slick-body .slick-social a {color:#666;}
+
 #slick-body h3 {text-align:center;margin-bottom: 2em;text-transform: uppercase;font-size: 1.5em;}
 
 #slick-body>div[role="intro"] {margin-bottom:4em;}
@@ -38,7 +41,7 @@
 
 /* SEARCH STYLE 
 ===========================================*/
-#slick-body>div[role="search"] {}
+#slick-body>div[role="search"] {border: 1px solid #333;padding: 1em 1em;background: #d8e6f1;}
 	#slick-body>div[role="search"] input {width:100%;}  
 #slick-body>div[role="results"] {max-height: 200px;overflow: scroll;border-bottom: #ddd solid 2px;margin-top: 1em;margin-bottom: 1.5em;border-top: #ddd solid 2px;}
 	#slick-body>div[role="results"] div {padding: .5em 0;border-bottom: 1px solid #aaa;}
@@ -77,4 +80,18 @@
 	.seventy {width: 70%;margin: 0 auto;}
 	.fifty {width: 50%;margin: 0 auto;}
 	.twenty-five {width: 25%;margin: 0 auto;}
+}
+
+/* SORT COLUMNS
+===================================*/
+table thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+}
+table thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table thead tr .headerSortDown {
+	background-image: url(desc.gif);
 }

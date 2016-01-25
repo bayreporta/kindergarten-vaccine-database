@@ -62,12 +62,18 @@ var stackedColumnChart = {
 			var obj = new Object();
 
 			obj['xlabel'] = String(year);
-			obj['Vaccine Opt-out'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['Medical Exemption'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			/*obj['Opt-out'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Medical'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
 			i == 7 ? obj['Overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['Overdue'] = 0
 			obj['Conditional'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);*/
 			
+			i == 7 ? obj['Overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['Overdue'] = 0
+			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Conditional'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Medical'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
+			obj['Opt-out'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
+
 			ret.push(obj);
 			year ++;
 		}
@@ -108,7 +114,6 @@ var stackedColumnChart = {
 			d.seg = color.domain().map(function(name){ return {name:name, y0:y0, y1: y0 += +d[name]}; })
 			d.seg.forEach(function(d) {d.y0 /= y0; d.y1 /= y0;});
 		})
-		console.log(data)
 
 		/* SORT
 		====================================*/

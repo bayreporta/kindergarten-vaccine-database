@@ -4,6 +4,7 @@
         <meta charset="utf-8"><title>{{data.school_name}} Vaccine Database | EdSource</title></meta>
         {% include 'header.html' %}
         <link rel="stylesheet" type="text/css" href="/static/bar.css">
+        <script type="text/javascript" src="/static/vax-db.js"></script>
         <script type="text/javascript" src="/static/stacked-column-percent.js"></script>
     </head>
     <body>
@@ -15,17 +16,27 @@
                     <p>{{data.city}}, CA</p>
                     <p>{{data.type | capitalize}} School</p>
                 </div>
+                <div style="width:246px;margin:0 auto;">
+                    <div class="slick-social">
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+                    </div>
+                </div>
                 <div class="temp-charts" id="stacked-chart-1"></div>
                 <div class="pretty-table fifty">
                     <table id="pretty-table" cellpadding=7>
                         <thead>
-                            <th>School Year</th>
-                            <th>Enrollment</th>
-                            <th>Vaccine Opt-out</th>
-                            <th>Medical Exemption</th>
-                            <th>Conditional</th>
-                            <th>Up-to-date</th>
-                            <th>Overdue</th>
+                            <th class="header">School Year</th>
+                            <th class="header">Enrollment</th>
+                            <th class="header">Opt-out</th>
+                            <th class="header">Medical</th>
+                            <th class="header">Conditional</th>
+                            <th class="header">Up-to-date</th>
+                            <th class="header">Overdue</th>
                         </thead>
                         {% if data.enroll_2008 is string %}
                         <tr>
@@ -36,17 +47,7 @@
                             <td>{{('{0:,}'.format(data.con_2008 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2008 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2008</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                       
                         {% endif %}
                         {% if data.enroll_2009 is string %}
                         <tr>
@@ -57,17 +58,7 @@
                             <td>{{('{0:,}'.format(data.con_2009 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2009 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2009</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                      
                         {% endif %}
                         {% if data.enroll_2010 is string %}
                         <tr>
@@ -79,17 +70,7 @@
                             <td>{{('{0:,}'.format(data.utd_2010 | int))}}</td>                                        
                             <td>N/A</td>                                        
                         </tr>
-                        {% else %}
-                        <tr>
-                            <td>2010</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
-                        {% endif %}
+                       {% endif %}
                         {% if data.enroll_2011 is string %}
                         <tr>
                             <td>2011</td>
@@ -99,17 +80,7 @@
                             <td>{{('{0:,}'.format(data.con_2011 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2011 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2011</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                       
                         {% endif %}
                         {% if data.enroll_2012 is string %}
                         <tr>
@@ -120,17 +91,7 @@
                             <td>{{('{0:,}'.format(data.con_2012 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2012 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2012</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                        
                         {% endif %}
                         {% if data.enroll_2013 is string %}
                         <tr>
@@ -141,17 +102,7 @@
                             <td>{{('{0:,}'.format(data.con_2013 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2013 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2013</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                       
                         {% endif %}
                         {% if data.enroll_2014 is string %}
                         <tr>
@@ -162,17 +113,7 @@
                             <td>{{('{0:,}'.format(data.con_2014 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2014 | int))}}</td>                                        
                             <td>N/A</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2014</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                      
                         {% endif %}
                         {% if data.enroll_2015 is string %}
                         <tr>
@@ -183,27 +124,41 @@
                             <td>{{('{0:,}'.format(data.con_2015 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.utd_2015 | int))}}</td>                                        
                             <td>{{('{0:,}'.format(data.overdue_2015 | int))}}</td>                                        
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td>2015</td>
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                        
-                            <td>N/A</td>                                                                              
-                        </tr>
+                        </tr>                                                                                                   
                         {% endif %}
                     </table>
                 </div>
-                <p class="fifty" style="font-size:1em;"><em>California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                <div role="search" class="fifty" style="margin-top:1.5em;">
+                    <div>
+                        <h3>Search Elementary Schools</h3>
+                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
+                        <input onclick="ga('send','event', 'VAX DATABASE', 'SEARCH SCHOOLS', '');" class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
+                    </div>
                 </div>
+                <div class="vax-results fifty" role="results" type="0"></div>
             </section>
+
             {% include 'footer.html' %}
         </div>
     </body>    
     <script type="text/javascript">
-        stackedColumnChart.getAttr({{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['RdYlBu'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', 'Source: California Department of Public Health.<br> Years with missing data mean no data was available for that year.', true);
+        stackedColumnChart.getAttr({{ json|safe }}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', 'Source: California Department of Public Health.<br> Years with missing data mean no data was available for that year.', true);
+
+        jQuery(document).ready(function(){
+            /* POPULATE SOCIAL
+            =======================================*/   
+            var URL = window.location.href;
+
+            jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+            jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+            jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+            jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+
+            /* CONFIGURE TABLESORTER
+            ======================================*/   
+            jQuery('.pretty-table table').tablesorter({sortList: [[0,0]]});
+        })
+
     </script>
 </html>

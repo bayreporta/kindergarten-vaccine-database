@@ -11,7 +11,17 @@
             <section id="slick-body">
                 <div role="intro" class="seventy">
                     <h2>Search All Schools</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <div style="width:246px;margin:0 auto;">
+                        <div class="slick-social">
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+                        </div>
+                    </div>
+                    <p>Search through our list of over 7,000 kindergarten schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
                 </div>
                 <div class="pretty-table seventy">
                     <section id="pretty-table-search-options">
@@ -25,8 +35,8 @@
                                 <th>School Name</th>
                                 <th>Type</th>
                                 <th>Enrollment</th>
-                                <th>Vaccine Opt-out</th>
-                                <th>Medical Exemption</th>
+                                <th>Opt-out</th>
+                                <th>Medical</th>
                                 <th>Conditional</th>
                                 <th>Up-to-date</th>
                                 <th>Overdue</th>
@@ -97,9 +107,15 @@
         }
 
         jQuery(document).ready(function(){
-            /* CONFIGURE TABLESORTER
-            ======================================*/ 
-            jQuery('#pretty-table table').tablesorter();
+
+            /* POPULATE SOCIAL
+            =======================================*/   
+            var URL = window.location.href;
+
+            jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+            jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+            jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+            jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
 
             /* SEARCH OPTIONS
             ======================================*/ 
