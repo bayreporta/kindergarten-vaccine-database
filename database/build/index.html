@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"><title>Kindergarten Vaccination Database | EdSource</title></meta>
+        
+<meta name="description" content="A non-profit journalism website reporting on key education issues in California and beyond."></meta>
+<meta name="tags" content="education news, california education, non-profit news, common core, local control funding formula, k-12 education, smarter balanced"></meta> 
+<meta name="HandheldFriendly" content="true" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width, user-scalable=no" />
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' id='default_css-css'  href='http://edsource.org/wp-content/themes/nakatomi/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='default_css-css'  href='http://edsource.org/wp-content/themes/nakatomi/templates/slick/slick.css' type='text/css' media='all' />
+<link rel='stylesheet' id='default_css-css'  href='/static/vax-db.css' type='text/css' media='all' />
+<link rel='stylesheet' id='default_css-css'  href='/static/table.css' type='text/css' media='all' />
+<link rel="shortcut icon" href="http://edsource.org/wp-content/themes/nakatomi/styles/graphics/favicon.png">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+<script src="http://edsource.org/wp-content/js/d3.tip.v0.6.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://edsource.org/wp-content/js/colorbrewer.js"></script>
+<script type="text/javascript" src="http://edsource.org/wp-content/js/jquery.tablesorter.min.js"></script>
+        <link rel='stylesheet' id='default_css-css'  href='/static/bar.css' type='text/css' media='all' />
+        <script type="text/javascript" src="/static/vax-db.js"></script>
+        <script type="text/javascript" src="/static/stacked-column-percent.js"></script>
+    </head>
+    <body>
+        <div id="slick-contain">
+            <section id="slick-header">
+    <div class="slick-site">
+        <h2><a href="http://edsource.org">EdSource</a></h2>
+    </div>
+    <div><h2><a href="http://localhost:5000">Vax Database Home</a></h2></div>
+     <div class="slick-social-hed">
+        <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&via=edsource&text="><i class="fa fa-twitter"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id="><i class="fa fa-facebook"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&title=: &summary=&source=EdSource"><i class="fa fa-linkedin"></i></a>
+    </div>
+    <div class="slick-nav-hed">
+        <!--<a onclick="ga('send','\event', 'VAX DATABASE', '\SCHOOL LIST', '');" href="search.html">School List</a>-->
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FAQ', '');" href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">SB 277 FAQ</a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'STORYLINE', '');" href="http://edsource.org/storylines/vaccinations-in-california">Vaccine Storyline</a>
+    </div>
+
+</section>
+            <section id="vax-header"><img src="http://edsource.org/wp-content/uploads/2015/11/vaccine-main.png"><p>Norm Lanier, Flickr</p></section>
+            <section id="slick-body">              
+                <div role="intro" class="fifty">
+                    <h2>Kindergargen Vaccination Database</h2>
+                    <p style="text-align:center;margin:0;"><em><a style="color:#666;" href="http://edsource.org/author/josborn">By John C. Osborn</a></em></p>
+                    <div style="width:246px;margin:0 auto;">
+                        <div class="slick-social">
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+                        </div>
+                    </div>
+                    <p>Use this database to investigate how many kindergarten students were vaccinated at any public, charter or private California elementary school in the 2015-16 school year. California law mandates that kindergarten students be up-to-date on a number of vaccines that help prevent childhood diseases, such as whooping cough, measles and polio. However, the 2015-16 school year is the last one which will allow parents to opt-out their children from those vaccine requirements for religious or personal reasons after the passage of SB 277 in 2015. Read our <a href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">answers to "frequently asked questions" about how SB 277</a> changes vaccine requirements.</p>
+                    <p>Have a question about the database? <a href="mailto:edsourceweb@gmail.com">Send your questions and comments our way.</a></p>
+                </div>
+                <div role="search" class="fifty">
+                    <div>
+                        <h3>Search Elementary Schools</h3>
+                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
+                        <input onclick="ga('send','event', 'VAX DATABASE', 'SEARCH SCHOOLS', '');" class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
+                    </div>
+                </div>
+                <div class="vax-results fifty" role="results" type="0"></div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - All Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-1"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>496,085</td>
+                                <td>9,203</td>                                        
+                                <td>914</td>                                        
+                                <td>30,769</td>                                        
+                                <td>455,199</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>491,653</td>
+                                <td>9,701</td>                                        
+                                <td>961</td>                                        
+                                <td>32,511</td>                                        
+                                <td>448,480</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>505,088</td>
+                                <td>11,510</td>                                        
+                                <td>943</td>                                        
+                                <td>34,226</td>                                        
+                                <td>458,409</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>524,336</td>
+                                <td>12,256</td>                                        
+                                <td>850</td>                                        
+                                <td>33,874</td>                                        
+                                <td>477,356</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>525,536</td>
+                                <td>14,294</td>                                        
+                                <td>900</td>                                        
+                                <td>35,471</td>                                        
+                                <td>474,871</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>530,530</td>
+                                <td>16,416</td>                                        
+                                <td>983</td>                                        
+                                <td>34,430</td>                                        
+                                <td>478,701</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>531,940</td>
+                                <td>13,257</td>                                        
+                                <td>1,010</td>                                        
+                                <td>36,417</td>                                        
+                                <td>481,256</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>547,520</td>
+                                <td>12,763</td>                                        
+                                <td>916</td>                                        
+                                <td>24,201</td>                                        
+                                <td>508,693</td>                                        
+                                <td>947</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                </div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Non-Charter Public Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-2"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>429,568</td>
+                                <td>6,167</td>                                        
+                                <td>764</td>                                        
+                                <td>25,738</td>                                        
+                                <td>396,899</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>425,969</td>
+                                <td>6,477</td>                                        
+                                <td>812</td>                                        
+                                <td>26,691</td>                                        
+                                <td>391,989</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>436,723</td>
+                                <td>7,553</td>                                        
+                                <td>808</td>                                        
+                                <td>27,977</td>                                        
+                                <td>400,385</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>449,425</td>
+                                <td>7,717</td>                                        
+                                <td>687</td>                                        
+                                <td>27,865</td>                                        
+                                <td>413,156</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>447,830</td>
+                                <td>9,041</td>                                        
+                                <td>730</td>                                        
+                                <td>28,878</td>                                        
+                                <td>409,181</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>455,140</td>
+                                <td>10,510</td>                                        
+                                <td>795</td>                                        
+                                <td>28,556</td>                                        
+                                <td>415,279</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>454,665</td>
+                                <td>8,057</td>                                        
+                                <td>830</td>                                        
+                                <td>30,747</td>                                        
+                                <td>415,031</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>466,234</td>
+                                <td>7,478</td>                                        
+                                <td>693</td>                                        
+                                <td>19,765</td>                                        
+                                <td>437,507</td>                                        
+                                <td>791</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+                </div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Private Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-3"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>46,903</td>
+                                <td>1,502</td>                                        
+                                <td>108</td>                                        
+                                <td>3,374</td>                                        
+                                <td>41,919</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>44,305</td>
+                                <td>1,670</td>                                        
+                                <td>119</td>                                        
+                                <td>3,543</td>                                        
+                                <td>38,973</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>43,156</td>
+                                <td>1,748</td>                                        
+                                <td>103</td>                                        
+                                <td>3,714</td>                                        
+                                <td>37,591</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>44,136</td>
+                                <td>1,983</td>                                        
+                                <td>118</td>                                        
+                                <td>3,326</td>                                        
+                                <td>38,709</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>43,824</td>
+                                <td>2,142</td>                                        
+                                <td>119</td>                                        
+                                <td>3,818</td>                                        
+                                <td>37,745</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>39,762</td>
+                                <td>2,246</td>                                        
+                                <td>117</td>                                        
+                                <td>3,380</td>                                        
+                                <td>34,019</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>38,342</td>
+                                <td>1,964</td>                                        
+                                <td>104</td>                                        
+                                <td>2,995</td>                                        
+                                <td>33,279</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>40,352</td>
+                                <td>1,901</td>                                        
+                                <td>139</td>                                        
+                                <td>2,587</td>                                        
+                                <td>35,678</td>                                        
+                                <td>47</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+
+                </div>
+                <div style="margin-top:2em;">
+                    <div role="header" class="seventy">
+                        <h2>California - Charter Schools</h2>
+                    </div>
+                    <div class="temp-charts" id="stacked-chart-4"></div>
+                    <div class="pretty-table fifty">
+                        <table id="pretty-table" cellpadding=7>
+                            <thead>
+                                <th class="header">School Year</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
+                            </thead>
+                            <tr>
+                                <td>2008</td>
+                                <td>19,614</td>
+                                <td>1,534</td>                                        
+                                <td>42</td>                                        
+                                <td>1,657</td>                                        
+                                <td>16,381</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2009</a></td>
+                                <td>21,379</td>
+                                <td>1,554</td>                                        
+                                <td>30</td>                                        
+                                <td>2,277</td>                                        
+                                <td>17,518</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2010</td>
+                                <td>25,209</td>
+                                <td>2,209</td>                                        
+                                <td>32</td>                                        
+                                <td>2,535</td>                                        
+                                <td>20,433</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2011</td>
+                                <td>30,775</td>
+                                <td>2,556</td>                                        
+                                <td>45</td>                                        
+                                <td>2,683</td>                                        
+                                <td>25,491</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>                
+                            <tr>
+                                <td>2012</td>
+                                <td>33,882</td>
+                                <td>3,111</td>                                        
+                                <td>51</td>                                        
+                                <td>2,775</td>                                        
+                                <td>27,945</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2013</td>
+                                <td>35,628</td>
+                                <td>3,660</td>                                        
+                                <td>71</td>                                        
+                                <td>2,494</td>                                        
+                                <td>29,403</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2014</td>
+                                <td>38,933</td>
+                                <td>3,236</td>                                        
+                                <td>76</td>                                        
+                                <td>2,675</td>                                        
+                                <td>32,946</td>                                        
+                                <td>N/A</td>                                        
+                            </tr>
+                            <tr>
+                                <td>2015</td>
+                                <td>40,934</td>
+                                <td>3,384</td>                                        
+                                <td>84</td>                                        
+                                <td>1,849</td>                                        
+                                <td>35,508</td>                                        
+                                <td>109</td>                                        
+                            </tr>                      
+                        </table>
+                    </div>
+                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
+
+                </div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function(){
+
+                        /* POPULATE SOCIAL
+                        =======================================*/   
+                        var URL = window.location.href;
+
+                        jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+                        jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+                        jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+                        jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+
+                        /* CONFIGURE TABLESORTER
+                        ======================================*/   
+                        jQuery('.pretty-table table').tablesorter({sortList: [[0,0]]});
+                    })
+
+                    stackedColumnChart.getAttr({'pme_2009': '961', 'county': 'None', 'utd_2008': '455199', 'enroll_2008': '496085', 'enroll_2009': '491653', 'city': 'None', 'con_2014': '36417', 'con_2015': '24201', 'con_2012': '35471', 'con_2013': '34430', 'district': 'Statewide Average', 'con_2011': '33874', 'enroll_2010': '505088', 'pbe_2008': '9203', 'pbe_2009': '9701', 'overdue_2015': '947', 'utd_2009': '448480', 'type': 'ALL', 'con_2010': '34226', 'school_name': 'CALIFORNIA', 'con_2009': '32511', 'con_2008': '30769', 'pme_2008': '914', 'enroll_2015': '547520', 'enroll_2014': '531940', 'school_code': '0', 'enroll_2011': '524336', 'slug': 'skip', 'enroll_2013': '530530', 'enroll_2012': '525536', 'utd_2011': '477356', 'utd_2010': '458409', 'utd_2013': '478701', 'utd_2012': '474871', 'utd_2015': '508693', 'utd_2014': '481256', 'pme_2010': '943', 'pme_2011': '850', 'pme_2012': '900', 'pme_2013': '983', 'pme_2014': '1010', 'pme_2015': '916', 'pbe_2013': '16416', 'pbe_2012': '14294', 'pbe_2011': '12256', 'pbe_2010': '11510', 'pbe_2015': '12763', 'pbe_2014': '13257'}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '812', 'county': 'None', 'utd_2008': '396899', 'enroll_2008': '429568', 'enroll_2009': '425969', 'city': 'None', 'con_2014': '30747', 'con_2015': '19765', 'con_2012': '28878', 'con_2013': '28556', 'district': 'Statewide Average', 'con_2011': '27865', 'enroll_2010': '436723', 'pbe_2008': '6167', 'pbe_2009': '6477', 'overdue_2015': '791', 'utd_2009': '391989', 'type': 'PUBLIC', 'con_2010': '27977', 'school_name': 'CALIFORNIA', 'con_2009': '26691', 'con_2008': '25738', 'pme_2008': '764', 'enroll_2015': '466234', 'enroll_2014': '454665', 'school_code': '0', 'enroll_2011': '449425', 'slug': 'skip', 'enroll_2013': '455140', 'enroll_2012': '447830', 'utd_2011': '413156', 'utd_2010': '400385', 'utd_2013': '415279', 'utd_2012': '409181', 'utd_2015': '437507', 'utd_2014': '415031', 'pme_2010': '808', 'pme_2011': '687', 'pme_2012': '730', 'pme_2013': '795', 'pme_2014': '830', 'pme_2015': '693', 'pbe_2013': '10510', 'pbe_2012': '9041', 'pbe_2011': '7717', 'pbe_2010': '7553', 'pbe_2015': '7478', 'pbe_2014': '8057'}, 'stacked-chart-2', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '119', 'county': 'None', 'utd_2008': '41919', 'enroll_2008': '46903', 'enroll_2009': '44305', 'city': 'None', 'con_2014': '2995', 'con_2015': '2587', 'con_2012': '3818', 'con_2013': '3380', 'district': 'Statewide Average', 'con_2011': '3326', 'enroll_2010': '43156', 'pbe_2008': '1502', 'pbe_2009': '1670', 'overdue_2015': '47', 'utd_2009': '38973', 'type': 'PRIVATE', 'con_2010': '3714', 'school_name': 'CALIFORNIA', 'con_2009': '3543', 'con_2008': '3374', 'pme_2008': '108', 'enroll_2015': '40352', 'enroll_2014': '38342', 'school_code': '0', 'enroll_2011': '44136', 'slug': 'skip', 'enroll_2013': '39762', 'enroll_2012': '43824', 'utd_2011': '38709', 'utd_2010': '37591', 'utd_2013': '34019', 'utd_2012': '37745', 'utd_2015': '35678', 'utd_2014': '33279', 'pme_2010': '103', 'pme_2011': '118', 'pme_2012': '119', 'pme_2013': '117', 'pme_2014': '104', 'pme_2015': '139', 'pbe_2013': '2246', 'pbe_2012': '2142', 'pbe_2011': '1983', 'pbe_2010': '1748', 'pbe_2015': '1901', 'pbe_2014': '1964'}, 'stacked-chart-3', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '30', 'county': 'None', 'utd_2008': '16381', 'enroll_2008': '19614', 'enroll_2009': '21379', 'city': 'None', 'con_2014': '2675', 'con_2015': '1849', 'con_2012': '2775', 'con_2013': '2494', 'district': 'Statewide Average', 'con_2011': '2683', 'enroll_2010': '25209', 'pbe_2008': '1534', 'pbe_2009': '1554', 'overdue_2015': '109', 'utd_2009': '17518', 'type': 'CHARTER', 'con_2010': '2535', 'school_name': 'CALIFORNIA', 'con_2009': '2277', 'con_2008': '1657', 'pme_2008': '42', 'enroll_2015': '40934', 'enroll_2014': '38933', 'school_code': '0', 'enroll_2011': '30775', 'slug': 'skip', 'enroll_2013': '35628', 'enroll_2012': '33882', 'utd_2011': '25491', 'utd_2010': '20433', 'utd_2013': '29403', 'utd_2012': '27945', 'utd_2015': '35508', 'utd_2014': '32946', 'pme_2010': '32', 'pme_2011': '45', 'pme_2012': '51', 'pme_2013': '71', 'pme_2014': '76', 'pme_2015': '84', 'pbe_2013': '3660', 'pbe_2012': '3111', 'pbe_2011': '2556', 'pbe_2010': '2209', 'pbe_2015': '3384', 'pbe_2014': '3236'}, 'stacked-chart-4', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                </script>
+
+            </section>      
+            <section id="slick-footer">
+	<script type="text/javascript">
+		//Get Date //
+		var date = new Date();date = date.getFullYear();
+		jQuery('#slick-footer').append('<p>©'+date+' EdSource. All Rights Reserved</p>');
+
+		// GA CODE //
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-3051201-4', 'edsource.org');
+	    ga('send', 'pageview');
+
+    </script>
+</section>   
+        </div>
+    </body>    
+
+</html>
