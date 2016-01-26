@@ -5,7 +5,7 @@ var searchTool = {
 	},
 	processData:function(v){
 		//jQuery.getJSON('http://edsource.org/wp-content/js/json/lcff-comparison/data_search.json', function(d){
-		jQuery.getJSON('/static/search.json', function(d){
+		jQuery.getJSON('http://edsource.org/kindergarten-vaccine-database/static/search.json', function(d){
 			v.data = d;	
 
 			searchTool.calibrateSearch(v.data, searchTool.vars.results);
