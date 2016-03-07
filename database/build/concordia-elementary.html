@@ -17,15 +17,15 @@
 <link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/vax-db.css' type='text/css' media='all' />
 <link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/table.css' type='text/css' media='all' />
 <link rel="shortcut icon" href="http://edsource.org/wp-content/themes/nakatomi/styles/graphics/favicon.png">
-
+<link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/bar.css' type='text/css' media='all' />
+        
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
 <script src="http://edsource.org/wp-content/js/d3.tip.v0.6.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://edsource.org/wp-content/js/colorbrewer.js"></script>
 <script type="text/javascript" src="http://edsource.org/wp-content/js/jquery.tablesorter.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://edsource.org/kindergarten-vaccine-database/static/bar.css">
-        <script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/vax-db.js"></script>
-        <script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/stacked-column-percent.js"></script>
+<script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/vax-db.js"></script>
+<script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/stacked-column-percent.js"></script>
     </head>
     <body>
         <div id="slick-contain">
@@ -33,15 +33,14 @@
     <div class="slick-site">
         <h2><a href="http://edsource.org">EdSource</a></h2>
     </div>
-    <div><h2><a href="http://localhost:5000">Vax Database Home</a></h2></div>
+    <div><h2><a href="http://edsource.org/kindergarten-vaccine-database">Vaccine Database Home</a></h2></div>
      <div class="slick-social-hed">
         <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&via=edsource&text="><i class="fa fa-twitter"></i></a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id="><i class="fa fa-facebook"></i></a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&title=: &summary=&source=EdSource"><i class="fa fa-linkedin"></i></a>
     </div>
     <div class="slick-nav-hed">
-        <!--<a onclick="ga('send','\event', 'VAX DATABASE', '\SCHOOL LIST', '');" href="search.html">School List</a>-->
-        <a onclick="ga('send','event', 'VAX DATABASE', 'FAQ', '');" href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">SB 277 FAQ</a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FAQ', '');" href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">Vaccine FAQ</a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'STORYLINE', '');" href="http://edsource.org/storylines/vaccinations-in-california">Vaccine Storyline</a>
     </div>
 
@@ -52,16 +51,37 @@
                     <p>San Clemente, CA</p>
                     <p>Public School</p>
                 </div>
-                <div style="width:246px;margin:0 auto;">
-                    <div class="slick-social">
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
-                    </div>
-                </div>
+                <div class="slick-social-contain">
+    <div class="slick-social">
+        <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	    /* POPULATE SOCIAL
+	    =======================================*/   
+	    var URL = window.location.href;
+
+	    jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+	    jQuery('.slickFB').add('.slick-social-hed a:eq(1)').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+	    jQuery('.slickTwit').add('.slick-social-hed a:eq(0)').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+	    jQuery('.slickLink').add('.slick-social-hed a:eq(2)').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+	})
+</script>
+                <div class="fifty" role="def"> <h3>Definitions:</h3>
+<ul>
+<li><strong>Opt-out</strong>: Refers to students whose parents received exemptions from school vaccine requirements for personal or religious reasons.</li>
+<li><strong>Medical</strong>: Refers to students who are exempt from school vaccine requirements for medical reasons.</li>
+<li><strong>Conditional</strong>: Refers to students who have received some vaccines but under immunization schedules must wait before their next vaccinations. They are admitted on the condition that they become up to date.</li>
+<li><strong>Up-to-date</strong>: Refers to students who are fully vaccinated.</li>
+<li><strong>Overdue</strong>: Refers to students who have not met vaccination requirements and are subject to exclusion from school. The California Department of Public Health began tracking “overdue” students in the 2015-16 school year. </li>
+</ul></div>
                 <div class="temp-charts" id="stacked-chart-1"></div>
                 <div class="pretty-table fifty">
                     <table id="pretty-table" cellpadding=7>
@@ -164,11 +184,10 @@
                         
                     </table>
                 </div>
-                <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
                 <div role="search" class="fifty" style="margin-top:1.5em;">
                     <div>
                         <h3>Search Elementary Schools</h3>
-                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
+                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as currently operating by the California Department of Education for the 2015-16 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
                         <input onclick="ga('send','event', 'VAX DATABASE', 'SEARCH SCHOOLS', '');" class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
                     </div>
                 </div>
@@ -195,17 +214,9 @@
         </div>
     </body>    
     <script type="text/javascript">
-        stackedColumnChart.getAttr({"pme_2009": "0", "county": "Orange", "utd_2008": "73", "enroll_2008": "85", "enroll_2009": "100", "city": "San Clemente", "con_2014": "3", "con_2015": "3", "con_2012": "8", "con_2013": "5", "district": "Capistrano Unified", "con_2011": "15", "enroll_2010": "96", "pbe_2008": "8", "pbe_2009": "15", "overdue_2015": "0", "utd_2009": "73", "type": "PUBLIC", "con_2010": "5", "school_name": "CONCORDIA ELEMENTARY", "con_2009": "12", "con_2008": "1", "pme_2008": "3", "enroll_2015": "91", "enroll_2014": "87", "school_code": "6027585", "enroll_2011": "109", "slug": "concordia-elementary", "enroll_2013": "106", "enroll_2012": "113", "utd_2011": "94", "utd_2010": "81", "utd_2013": "75", "utd_2012": "85", "utd_2015": "73", "utd_2014": "73", "pme_2010": "0", "pme_2011": "0", "pme_2012": "0", "pme_2013": "0", "pme_2014": "0", "pme_2015": "0", "pbe_2013": "26", "pbe_2012": "20", "pbe_2011": "0", "pbe_2010": "10", "pbe_2015": "15", "pbe_2014": "11"}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', 'Source: California Department of Public Health.<br> Years with missing data mean no data was available for that year.', true);
+        stackedColumnChart.getAttr({"pme_2009": "0", "county": "Orange", "utd_2008": "73", "enroll_2008": "85", "enroll_2009": "100", "city": "San Clemente", "con_2014": "3", "con_2015": "3", "con_2012": "8", "con_2013": "5", "district": "Capistrano Unified", "con_2011": "15", "enroll_2010": "96", "pbe_2008": "8", "pbe_2009": "15", "overdue_2015": "0", "utd_2009": "73", "type": "PUBLIC", "con_2010": "5", "school_name": "CONCORDIA ELEMENTARY", "con_2009": "12", "con_2008": "1", "pme_2008": "3", "enroll_2015": "91", "enroll_2014": "87", "school_code": "6027585", "enroll_2011": "109", "slug": "concordia-elementary", "enroll_2013": "106", "enroll_2012": "113", "utd_2011": "94", "utd_2010": "81", "utd_2013": "75", "utd_2012": "85", "utd_2015": "73", "utd_2014": "73", "pme_2010": "0", "pme_2011": "0", "pme_2012": "0", "pme_2013": "0", "pme_2014": "0", "pme_2015": "0", "pbe_2013": "26", "pbe_2012": "20", "pbe_2011": "0", "pbe_2010": "10", "pbe_2015": "15", "pbe_2014": "11"}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-09 to 2015-16 School Years', 'Source: California Department of Public Health.<br> Years with missing data mean no data was available for that year.', true);
 
         jQuery(document).ready(function(){
-            /* POPULATE SOCIAL
-            =======================================*/   
-            var URL = window.location.href;
-
-            jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
-            jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
-            jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
-            jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
 
             /* CONFIGURE TABLESORTER
             ======================================*/   

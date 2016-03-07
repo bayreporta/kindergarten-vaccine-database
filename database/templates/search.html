@@ -11,16 +11,7 @@
             <section id="slick-body">
                 <div role="intro" class="seventy">
                     <h2>Search All Schools</h2>
-                    <div style="width:246px;margin:0 auto;">
-                        <div class="slick-social">
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
-                        </div>
-                    </div>
+                    {% include 'social.html' %}
                     <p>Search through our list of over 7,000 kindergarten schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
                 </div>
                 <div class="pretty-table seventy">
@@ -32,14 +23,14 @@
                     <section>
                          <table cellpadding=7>
                             <thead>
-                                <th>School Name</th>
-                                <th>Type</th>
-                                <th>Enrollment</th>
-                                <th>Opt-out</th>
-                                <th>Medical</th>
-                                <th>Conditional</th>
-                                <th>Up-to-date</th>
-                                <th>Overdue</th>
+                                <th class="header">School Name</th>
+                                <th class="header">Type</th>
+                                <th class="header">Enrollment</th>
+                                <th class="header">Opt-out</th>
+                                <th class="header">Medical</th>
+                                <th class="header">Conditional</th>
+                                <th class="header">Up-to-date</th>
+                                <th class="header">Overdue</th>
                             </thead>
                             {% for d in data %}
                             {% if loop.index0 > 3 %}
@@ -75,11 +66,7 @@
                 }
             }
         }
-
-        onReady(function () {
-            jQuery('#loaded').show();
-            jQuery('#loading').remove();
-        });
+        onReady(function () {jQuery('#loading').remove();});
 
 
         function searchTool(c){
@@ -107,15 +94,6 @@
         }
 
         jQuery(document).ready(function(){
-
-            /* POPULATE SOCIAL
-            =======================================*/   
-            var URL = window.location.href;
-
-            jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
-            jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
-            jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
-            jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
 
             /* SEARCH OPTIONS
             ======================================*/ 

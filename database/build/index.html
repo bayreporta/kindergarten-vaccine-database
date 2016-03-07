@@ -17,15 +17,15 @@
 <link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/vax-db.css' type='text/css' media='all' />
 <link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/table.css' type='text/css' media='all' />
 <link rel="shortcut icon" href="http://edsource.org/wp-content/themes/nakatomi/styles/graphics/favicon.png">
-
+<link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/bar.css' type='text/css' media='all' />
+        
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
 <script src="http://edsource.org/wp-content/js/d3.tip.v0.6.3.js" charset="utf-8"></script>
 <script type="text/javascript" src="http://edsource.org/wp-content/js/colorbrewer.js"></script>
 <script type="text/javascript" src="http://edsource.org/wp-content/js/jquery.tablesorter.min.js"></script>
-        <link rel='stylesheet' id='default_css-css'  href='http://edsource.org/kindergarten-vaccine-database/static/bar.css' type='text/css' media='all' />
-        <script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/vax-db.js"></script>
-        <script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/stacked-column-percent.js"></script>
+<script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/vax-db.js"></script>
+<script type="text/javascript" src="http://edsource.org/kindergarten-vaccine-database/static/stacked-column-percent.js"></script>
     </head>
     <body>
         <div id="slick-contain">
@@ -33,41 +33,53 @@
     <div class="slick-site">
         <h2><a href="http://edsource.org">EdSource</a></h2>
     </div>
-    <div><h2><a href="http://localhost:5000">Vax Database Home</a></h2></div>
+    <div><h2><a href="http://edsource.org/kindergarten-vaccine-database">Vaccine Database Home</a></h2></div>
      <div class="slick-social-hed">
         <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" href="https://twitter.com/share?url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&via=edsource&text="><i class="fa fa-twitter"></i></a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fedsource.org%2F%3Fpage_id="><i class="fa fa-facebook"></i></a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fedsource.org%2F%3Fpage_id=&title=: &summary=&source=EdSource"><i class="fa fa-linkedin"></i></a>
     </div>
     <div class="slick-nav-hed">
-        <!--<a onclick="ga('send','\event', 'VAX DATABASE', '\SCHOOL LIST', '');" href="search.html">School List</a>-->
-        <a onclick="ga('send','event', 'VAX DATABASE', 'FAQ', '');" href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">SB 277 FAQ</a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FAQ', '');" href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">Vaccine FAQ</a>
         <a onclick="ga('send','event', 'VAX DATABASE', 'STORYLINE', '');" href="http://edsource.org/storylines/vaccinations-in-california">Vaccine Storyline</a>
     </div>
 
 </section>
-            <section id="vax-header"><img src="http://edsource.org/wp-content/uploads/2015/11/vaccine-main.png"><p>Norm Lanier, Flickr</p></section>
+            <section id="vax-header"><img src="http://edsource.org/wp-content/uploads/2016/02/vax-db-header.jpg"><p>Pan American Health Organization, Flickr</p></section>
             <section id="slick-body">              
                 <div role="intro" class="fifty">
                     <h2>Kindergargen Vaccination Database</h2>
                     <p style="text-align:center;margin:0;"><em><a style="color:#666;" href="http://edsource.org/author/josborn">By John C. Osborn</a></em></p>
-                    <div style="width:246px;margin:0 auto;">
-                        <div class="slick-social">
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
-                            <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
-                        </div>
-                    </div>
-                    <p>Use this database to investigate how many kindergarten students were vaccinated at any public, charter or private California elementary school in the 2015-16 school year. California law mandates that kindergarten students be up-to-date on a number of vaccines that help prevent childhood diseases, such as whooping cough, measles and polio. However, the 2015-16 school year is the last one which will allow parents to opt-out their children from those vaccine requirements for religious or personal reasons after the passage of SB 277 in 2015. Read our <a href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">answers to "frequently asked questions" about how SB 277</a> changes vaccine requirements.</p>
+                    <div class="slick-social-contain">
+    <div class="slick-social">
+        <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	    /* POPULATE SOCIAL
+	    =======================================*/   
+	    var URL = window.location.href;
+
+	    jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+	    jQuery('.slickFB').add('.slick-social-hed a:eq(1)').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+	    jQuery('.slickTwit').add('.slick-social-hed a:eq(0)').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+	    jQuery('.slickLink').add('.slick-social-hed a:eq(2)').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+	})
+</script>
+                    <p>Use this database to find out how many kindergarten students were vaccinated at any public, charter or private California elementary school in the 2015-16 school year. California law mandates that kindergarten students be up-to-date on a number of vaccines that help prevent childhood diseases, such as whooping cough, measles and polio. However, the 2015-16 school year is the last one which will allow parents to opt out their children from those vaccine requirements for religious or personal reasons after the passage of SB 277 in 2015. Read our <a href="http://edsource.org/2015/what-schools-and-parents-need-to-know-about-the-new-vaccination-law/82242">answers to "frequently asked questions" about how SB 277</a> changes vaccine requirements.</p>
                     <p>Have a question about the database? <a href="mailto:edsourceweb@gmail.com">Send your questions and comments our way.</a></p>
                 </div>
                 <div role="search" class="fifty">
                     <div>
                         <h3>Search Elementary Schools</h3>
-                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as "active" by the California Department of Public Health for the 2015 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
+                        <p>Search through our list of over 7,000 elementary schools below to learn about their vaccine rates. Only schools designated as currently operating by the California Department of Education for the 2015-16 school year are listed below. Only schools with 10 or more students are listed in our database.</p>
                         <input onclick="ga('send','event', 'VAX DATABASE', 'SEARCH SCHOOLS', '');" class="search-bar" link="yes" role="0" type="text" style="height:24px;" placeholder="Type School Name or District">
                     </div>
                 </div>
@@ -76,6 +88,14 @@
                     <div role="header" class="seventy">
                         <h2>California - All Schools</h2>
                     </div>
+                    <div role="def" class="fifty"> <h3>Definitions:</h3>
+<ul>
+<li><strong>Opt-out</strong>: Refers to students whose parents received exemptions from school vaccine requirements for personal or religious reasons.</li>
+<li><strong>Medical</strong>: Refers to students who are exempt from school vaccine requirements for medical reasons.</li>
+<li><strong>Conditional</strong>: Refers to students who have received some vaccines but under immunization schedules must wait before their next vaccinations. They are admitted on the condition that they become up to date.</li>
+<li><strong>Up-to-date</strong>: Refers to students who are fully vaccinated.</li>
+<li><strong>Overdue</strong>: Refers to students who have not met vaccination requirements and are subject to exclusion from school. The California Department of Public Health began tracking “overdue” students in the 2015-16 school year. </li>
+</ul></div>
                     <div class="temp-charts" id="stacked-chart-1"></div>
                     <div class="pretty-table fifty">
                         <table id="pretty-table" cellpadding=7>
@@ -162,7 +182,6 @@
                             </tr>                      
                         </table>
                     </div>
-                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
                 </div>
                 <div style="margin-top:2em;">
                     <div role="header" class="seventy">
@@ -254,7 +273,6 @@
                             </tr>                      
                         </table>
                     </div>
-                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
                 </div>
                 <div style="margin-top:2em;">
                     <div role="header" class="seventy">
@@ -346,8 +364,6 @@
                             </tr>                      
                         </table>
                     </div>
-                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
-
                 </div>
                 <div style="margin-top:2em;">
                     <div role="header" class="seventy">
@@ -438,31 +454,20 @@
                                 <td>109</td>                                        
                             </tr>                      
                         </table>
-                    </div>
-                    <p class="fifty" style="font-size:1em;"><em>Notes: "Opt-out" refers to parents who opted their children out from vaccine requirements. "Medical" refers to vaccine opt-outs based on medical reasons. "Conditional" a child has met some, but not all, of the vaccination requirements. "Up-to-date" means child has all required vaccines. "Overdue" means child has not obtained opt-out and does not meet requirements. California Department of Public Health began tracking "Overdue" students in the 2015-16 school year.</em></p>
-
+                    </div>        
                 </div>
                 <script type="text/javascript">
                     jQuery(document).ready(function(){
-
-                        /* POPULATE SOCIAL
-                        =======================================*/   
-                        var URL = window.location.href;
-
-                        jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
-                        jQuery('.slickFB').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
-                        jQuery('.slickTwit').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
-                        jQuery('.slickLink').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
 
                         /* CONFIGURE TABLESORTER
                         ======================================*/   
                         jQuery('.pretty-table table').tablesorter({sortList: [[0,0]]});
                     })
 
-                    stackedColumnChart.getAttr({'pme_2009': '961', 'county': 'None', 'utd_2008': '455199', 'enroll_2008': '496085', 'enroll_2009': '491653', 'city': 'None', 'con_2014': '36417', 'con_2015': '24201', 'con_2012': '35471', 'con_2013': '34430', 'district': 'Statewide Average', 'con_2011': '33874', 'enroll_2010': '505088', 'pbe_2008': '9203', 'pbe_2009': '9701', 'overdue_2015': '947', 'utd_2009': '448480', 'type': 'ALL', 'con_2010': '34226', 'school_name': 'CALIFORNIA', 'con_2009': '32511', 'con_2008': '30769', 'pme_2008': '914', 'enroll_2015': '547520', 'enroll_2014': '531940', 'school_code': '0', 'enroll_2011': '524336', 'slug': 'skip', 'enroll_2013': '530530', 'enroll_2012': '525536', 'utd_2011': '477356', 'utd_2010': '458409', 'utd_2013': '478701', 'utd_2012': '474871', 'utd_2015': '508693', 'utd_2014': '481256', 'pme_2010': '943', 'pme_2011': '850', 'pme_2012': '900', 'pme_2013': '983', 'pme_2014': '1010', 'pme_2015': '916', 'pbe_2013': '16416', 'pbe_2012': '14294', 'pbe_2011': '12256', 'pbe_2010': '11510', 'pbe_2015': '12763', 'pbe_2014': '13257'}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
-                    stackedColumnChart.getAttr({'pme_2009': '812', 'county': 'None', 'utd_2008': '396899', 'enroll_2008': '429568', 'enroll_2009': '425969', 'city': 'None', 'con_2014': '30747', 'con_2015': '19765', 'con_2012': '28878', 'con_2013': '28556', 'district': 'Statewide Average', 'con_2011': '27865', 'enroll_2010': '436723', 'pbe_2008': '6167', 'pbe_2009': '6477', 'overdue_2015': '791', 'utd_2009': '391989', 'type': 'PUBLIC', 'con_2010': '27977', 'school_name': 'CALIFORNIA', 'con_2009': '26691', 'con_2008': '25738', 'pme_2008': '764', 'enroll_2015': '466234', 'enroll_2014': '454665', 'school_code': '0', 'enroll_2011': '449425', 'slug': 'skip', 'enroll_2013': '455140', 'enroll_2012': '447830', 'utd_2011': '413156', 'utd_2010': '400385', 'utd_2013': '415279', 'utd_2012': '409181', 'utd_2015': '437507', 'utd_2014': '415031', 'pme_2010': '808', 'pme_2011': '687', 'pme_2012': '730', 'pme_2013': '795', 'pme_2014': '830', 'pme_2015': '693', 'pbe_2013': '10510', 'pbe_2012': '9041', 'pbe_2011': '7717', 'pbe_2010': '7553', 'pbe_2015': '7478', 'pbe_2014': '8057'}, 'stacked-chart-2', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
-                    stackedColumnChart.getAttr({'pme_2009': '119', 'county': 'None', 'utd_2008': '41919', 'enroll_2008': '46903', 'enroll_2009': '44305', 'city': 'None', 'con_2014': '2995', 'con_2015': '2587', 'con_2012': '3818', 'con_2013': '3380', 'district': 'Statewide Average', 'con_2011': '3326', 'enroll_2010': '43156', 'pbe_2008': '1502', 'pbe_2009': '1670', 'overdue_2015': '47', 'utd_2009': '38973', 'type': 'PRIVATE', 'con_2010': '3714', 'school_name': 'CALIFORNIA', 'con_2009': '3543', 'con_2008': '3374', 'pme_2008': '108', 'enroll_2015': '40352', 'enroll_2014': '38342', 'school_code': '0', 'enroll_2011': '44136', 'slug': 'skip', 'enroll_2013': '39762', 'enroll_2012': '43824', 'utd_2011': '38709', 'utd_2010': '37591', 'utd_2013': '34019', 'utd_2012': '37745', 'utd_2015': '35678', 'utd_2014': '33279', 'pme_2010': '103', 'pme_2011': '118', 'pme_2012': '119', 'pme_2013': '117', 'pme_2014': '104', 'pme_2015': '139', 'pbe_2013': '2246', 'pbe_2012': '2142', 'pbe_2011': '1983', 'pbe_2010': '1748', 'pbe_2015': '1901', 'pbe_2014': '1964'}, 'stacked-chart-3', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
-                    stackedColumnChart.getAttr({'pme_2009': '30', 'county': 'None', 'utd_2008': '16381', 'enroll_2008': '19614', 'enroll_2009': '21379', 'city': 'None', 'con_2014': '2675', 'con_2015': '1849', 'con_2012': '2775', 'con_2013': '2494', 'district': 'Statewide Average', 'con_2011': '2683', 'enroll_2010': '25209', 'pbe_2008': '1534', 'pbe_2009': '1554', 'overdue_2015': '109', 'utd_2009': '17518', 'type': 'CHARTER', 'con_2010': '2535', 'school_name': 'CALIFORNIA', 'con_2009': '2277', 'con_2008': '1657', 'pme_2008': '42', 'enroll_2015': '40934', 'enroll_2014': '38933', 'school_code': '0', 'enroll_2011': '30775', 'slug': 'skip', 'enroll_2013': '35628', 'enroll_2012': '33882', 'utd_2011': '25491', 'utd_2010': '20433', 'utd_2013': '29403', 'utd_2012': '27945', 'utd_2015': '35508', 'utd_2014': '32946', 'pme_2010': '32', 'pme_2011': '45', 'pme_2012': '51', 'pme_2013': '71', 'pme_2014': '76', 'pme_2015': '84', 'pbe_2013': '3660', 'pbe_2012': '3111', 'pbe_2011': '2556', 'pbe_2010': '2209', 'pbe_2015': '3384', 'pbe_2014': '3236'}, 'stacked-chart-4', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-2015 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '961', 'county': 'None', 'utd_2008': '455199', 'enroll_2008': '496085', 'enroll_2009': '491653', 'city': 'None', 'con_2014': '36417', 'con_2015': '24201', 'con_2012': '35471', 'con_2013': '34430', 'district': 'Statewide Average', 'con_2011': '33874', 'enroll_2010': '505088', 'pbe_2008': '9203', 'pbe_2009': '9701', 'overdue_2015': '947', 'utd_2009': '448480', 'type': 'ALL', 'con_2010': '34226', 'school_name': 'CALIFORNIA', 'con_2009': '32511', 'con_2008': '30769', 'pme_2008': '914', 'enroll_2015': '547520', 'enroll_2014': '531940', 'school_code': '0', 'enroll_2011': '524336', 'slug': 'skip', 'enroll_2013': '530530', 'enroll_2012': '525536', 'utd_2011': '477356', 'utd_2010': '458409', 'utd_2013': '478701', 'utd_2012': '474871', 'utd_2015': '508693', 'utd_2014': '481256', 'pme_2010': '943', 'pme_2011': '850', 'pme_2012': '900', 'pme_2013': '983', 'pme_2014': '1010', 'pme_2015': '916', 'pbe_2013': '16416', 'pbe_2012': '14294', 'pbe_2011': '12256', 'pbe_2010': '11510', 'pbe_2015': '12763', 'pbe_2014': '13257'}, 'stacked-chart-1', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-09 to 2015-16 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '812', 'county': 'None', 'utd_2008': '396899', 'enroll_2008': '429568', 'enroll_2009': '425969', 'city': 'None', 'con_2014': '30747', 'con_2015': '19765', 'con_2012': '28878', 'con_2013': '28556', 'district': 'Statewide Average', 'con_2011': '27865', 'enroll_2010': '436723', 'pbe_2008': '6167', 'pbe_2009': '6477', 'overdue_2015': '791', 'utd_2009': '391989', 'type': 'PUBLIC', 'con_2010': '27977', 'school_name': 'CALIFORNIA', 'con_2009': '26691', 'con_2008': '25738', 'pme_2008': '764', 'enroll_2015': '466234', 'enroll_2014': '454665', 'school_code': '0', 'enroll_2011': '449425', 'slug': 'skip', 'enroll_2013': '455140', 'enroll_2012': '447830', 'utd_2011': '413156', 'utd_2010': '400385', 'utd_2013': '415279', 'utd_2012': '409181', 'utd_2015': '437507', 'utd_2014': '415031', 'pme_2010': '808', 'pme_2011': '687', 'pme_2012': '730', 'pme_2013': '795', 'pme_2014': '830', 'pme_2015': '693', 'pbe_2013': '10510', 'pbe_2012': '9041', 'pbe_2011': '7717', 'pbe_2010': '7553', 'pbe_2015': '7478', 'pbe_2014': '8057'}, 'stacked-chart-2', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-09 to 2015-16 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '119', 'county': 'None', 'utd_2008': '41919', 'enroll_2008': '46903', 'enroll_2009': '44305', 'city': 'None', 'con_2014': '2995', 'con_2015': '2587', 'con_2012': '3818', 'con_2013': '3380', 'district': 'Statewide Average', 'con_2011': '3326', 'enroll_2010': '43156', 'pbe_2008': '1502', 'pbe_2009': '1670', 'overdue_2015': '47', 'utd_2009': '38973', 'type': 'PRIVATE', 'con_2010': '3714', 'school_name': 'CALIFORNIA', 'con_2009': '3543', 'con_2008': '3374', 'pme_2008': '108', 'enroll_2015': '40352', 'enroll_2014': '38342', 'school_code': '0', 'enroll_2011': '44136', 'slug': 'skip', 'enroll_2013': '39762', 'enroll_2012': '43824', 'utd_2011': '38709', 'utd_2010': '37591', 'utd_2013': '34019', 'utd_2012': '37745', 'utd_2015': '35678', 'utd_2014': '33279', 'pme_2010': '103', 'pme_2011': '118', 'pme_2012': '119', 'pme_2013': '117', 'pme_2014': '104', 'pme_2015': '139', 'pbe_2013': '2246', 'pbe_2012': '2142', 'pbe_2011': '1983', 'pbe_2010': '1748', 'pbe_2015': '1901', 'pbe_2014': '1964'}, 'stacked-chart-3', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-09 to 2015-16 School Years', '', true);
+                    stackedColumnChart.getAttr({'pme_2009': '30', 'county': 'None', 'utd_2008': '16381', 'enroll_2008': '19614', 'enroll_2009': '21379', 'city': 'None', 'con_2014': '2675', 'con_2015': '1849', 'con_2012': '2775', 'con_2013': '2494', 'district': 'Statewide Average', 'con_2011': '2683', 'enroll_2010': '25209', 'pbe_2008': '1534', 'pbe_2009': '1554', 'overdue_2015': '109', 'utd_2009': '17518', 'type': 'CHARTER', 'con_2010': '2535', 'school_name': 'CALIFORNIA', 'con_2009': '2277', 'con_2008': '1657', 'pme_2008': '42', 'enroll_2015': '40934', 'enroll_2014': '38933', 'school_code': '0', 'enroll_2011': '30775', 'slug': 'skip', 'enroll_2013': '35628', 'enroll_2012': '33882', 'utd_2011': '25491', 'utd_2010': '20433', 'utd_2013': '29403', 'utd_2012': '27945', 'utd_2015': '35508', 'utd_2014': '32946', 'pme_2010': '32', 'pme_2011': '45', 'pme_2012': '51', 'pme_2013': '71', 'pme_2014': '76', 'pme_2015': '84', 'pbe_2013': '3660', 'pbe_2012': '3111', 'pbe_2011': '2556', 'pbe_2010': '2209', 'pbe_2015': '3384', 'pbe_2014': '3236'}, 'stacked-chart-4', 500,300, [50,100,30,40], colorbrewer['PuBuGn'], 5, false, null, null, ',g', 10, .1, '', 'Vaccination Rates: 2008-09 to 2015-16 School Years', '', true);
                 </script>
 
             </section>      

@@ -1,0 +1,23 @@
+<div class="slick-social-contain">
+    <div class="slick-social">
+        <a onclick="ga('send','event', 'VAX DATABASE', 'TWITTER', '');" class="slickTwit" target="_blank" href=""><i class="fa fa-twitter"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'FB', '');" class="slickFB" target="_blank" href=""><i class="fa fa-facebook"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'LINKED', '');" class="slickLink" target="_blank" href=""><i class="fa fa-linkedin"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'DONATE', '');" target="_blank" href="http://edsource.org/donate"><i class="fa fa-usd"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'EMAIL', '');" class="slickEmail" href=""><i class="fa fa-envelope"></i></a>
+        <a onclick="ga('send','event', 'VAX DATABASE', 'PRINT', '');" onclick="window.print();return false;"><i class="fa fa-print"></i></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+	    /* POPULATE SOCIAL
+	    =======================================*/   
+	    var URL = window.location.href;
+
+	    jQuery('.slickEmail').attr('href', 'mailto:?subject=Sharing &body=Just sharing this story from EdSource with you. ' + URL);
+	    jQuery('.slickFB').add('.slick-social-hed a:eq(1)').attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + URL);
+	    jQuery('.slickTwit').add('.slick-social-hed a:eq(0)').attr('href', 'https://twitter.com/share?url=' + URL + '&via=edsource&text=');
+	    jQuery('.slickLink').add('.slick-social-hed a:eq(2)').attr('href', 'https://www.linkedin.com/shareArticle?mini=true&url='+URL+'&title=: &summary=&source=EdSource');
+	})
+</script>

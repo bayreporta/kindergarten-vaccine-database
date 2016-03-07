@@ -37,8 +37,9 @@
 #slick-body>div[role="choices"]>div {display: inline-block;}
 #slick-body>div[role="choices"]>div:first-of-type {margin-right:90px;}
 
-
-
+#slick-body div[role="def"] {margin-top: 1em;border-top: 1px #ddd solid;padding-top: 1em;}
+	#slick-body div[role="def"] li {font-size: 1rem;}
+	
 /* SEARCH STYLE 
 ===========================================*/
 #slick-body>div[role="search"] {border: 1px solid #333;padding: 1em 1em;background: #d8e6f1;}
@@ -83,15 +84,7 @@
 }
 
 /* SORT COLUMNS
-===================================*/
-table thead tr .header {
-	background-image: url(bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-}
-table thead tr .headerSortUp {
-	background-image: url(asc.gif);
-}
-table thead tr .headerSortDown {
-	background-image: url(desc.gif);
-}
+===================================
+table thead tr .header {background-image: url(bg.gif);background-repeat: no-repeat;background-position: center right;}
+table thead tr .headerSortUp {background-image: url(asc.gif);}
+table thead tr .headerSortDown {background-image: url(desc.gif);}*/

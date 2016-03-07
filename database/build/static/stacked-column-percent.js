@@ -62,12 +62,7 @@ var stackedColumnChart = {
 			var obj = new Object();
 
 			obj['xlabel'] = String(year);
-			/*obj['Opt-out'] = Math.round((parseInt(d['pbe_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['Medical'] = Math.round((parseInt(d['pme_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			i == 7 ? obj['Overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['Overdue'] = 0
-			obj['Conditional'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
-			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);*/
-			
+					
 			i == 7 ? obj['Overdue'] = Math.round((parseInt(d['overdue_' + year]) / parseInt(d['enroll_' + year])) * 100) : obj['Overdue'] = 0
 			obj['Up-to-date'] = Math.round((parseInt(d['utd_' + year]) / parseInt(d['enroll_' + year])) * 100);
 			obj['Conditional'] = Math.round((parseInt(d['con_' + year]) / parseInt(d['enroll_' + year])) * 100);
