@@ -4,7 +4,7 @@ var searchTool = {
 		results:[]
 	},
 	processData:function(v){
-		jQuery.getJSON('http://edsource.org/kindergarten-vaccine-database/static/search.json', function(d){
+		jQuery.getJSON('//edsource.org/kindergarten-vaccine-database/static/search.json', function(d){
 			v.data = d;	
 			searchTool.calibrateSearch(v.data, searchTool.vars.results);
 		})
